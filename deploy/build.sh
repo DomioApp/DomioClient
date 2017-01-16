@@ -19,6 +19,8 @@ echo "Hash:       ${hash}"
 echo "Version:    ${version}"
 echo ------------------------------------------------------
 
+mkdir -p /usr/local/domio_client
+
 #go build -o /usr/local/bin/domio_public -ldflags "-X main.Buildstamp=$buildstamp -X main.Hash=$hash  -X main.Version=$version" domio_public
 npm install
 npm run f
