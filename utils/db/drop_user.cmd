@@ -1,1 +1,0 @@
-dropuser -U postgres sergeibasharov
