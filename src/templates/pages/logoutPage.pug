@@ -1,0 +1,9 @@
+extends ../layouts/blank
+
+block body
+    #logout-container
+        h4 You've been logged out
+        p
+            a(href='/') Return Home
+    script.
+        localStorage.clear();

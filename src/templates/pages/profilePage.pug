@@ -1,0 +1,15 @@
+extends ../layouts/default
+
+block body
+    #main-container
+        #sidebar
+            include ../includes/sidebar
+        #main-area
+            .domains-lists-container
+                .domains-list
+                    p My domains
+                    include ../includes/ownedDomainsList
+                .domains-list
+                    p Domains rented by me
+                    include ../includes/rentedDomainsList
+        #right-bar

@@ -1,0 +1,50 @@
+#add-domain-container
+    width 90%
+    max-width 900px
+    margin 0 auto
+    //background rgba(0, 0, 0, 0.05)
+    padding 80px 0 100px
+    h1
+        color rgba(0, 0, 0, 0.7)
+        text-align center
+        margin 0 0 20px
+        font-size 1.8em
+    form#add-domain-form
+        border 1px solid rgba(0, 0, 0, 0.05)
+        background rgba(0, 0, 0, 0.05)
+        display block
+        margin 0 auto
+        width 90%
+        max-width 500px
+        padding 40px
+        input
+            display block
+            width 100%
+            box-sizing border-box
+            margin 0 auto 10px
+            &#domain-name-input
+                padding 20px
+                font-size 1.2em
+            &#domain-price-input
+                padding 10px 20px
+                font-size 1em
+            &#domain-tags-input
+                padding 10px 20px
+                font-size 0.9em
+                margin-bottom 30px
+            &#domain-name-submit
+                width 50%
+                margin-bottom 0
+                padding 15px 0
+                background-color #0d3243
+                color #fff
+                border none
+                cursor pointer
+                transition background-color 0.1s
+                &:hover
+                    background-color lighten(#0d3243, 5%)
+        .domain-add-notes
+            font-size 0.8em
+            text-align center
+            margin-bottom 40px
+            color rgba(0, 0, 0, 0.9)

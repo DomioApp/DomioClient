@@ -1,0 +1,16 @@
+doctype html
+html
+    head
+        title= pageTitle
+        script(type='text/javascript', src= '/' + scriptFile + '.bundle.js')
+        meta(name='page', content= pageName)
+        link(href='/style.css' media='all' rel='stylesheet')
+        link(href='https://fonts.googleapis.com/icon?family=Material+Icons' media='all' rel='stylesheet')
+    body
+        if isLoggedIn
+            include ../includes/topbarUser
+        else
+            include ../includes/topbarPublic
+
+        block body
+    include ../includes/footer

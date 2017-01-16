@@ -1,0 +1,10 @@
+node_modules
+build
+server/server.app.js
+typings
+logs
+.idea/vcs.xml
+utils/generateDomains.js
+.vscode
+npm-debug.log
+server/awskey.ts

@@ -1,0 +1,8 @@
+#price-area-container
+    label(for='domain-price-input') Price, $
+    input#domain-price-input(type='number', value= price, autocomplete='off')
+
+    label(for='domain-price-period-select') per month, minimum
+    select#domain-price-period-select
+        each period in periods
+            option(value=period.value, selected=(period.value === domainPeriod))= period.label

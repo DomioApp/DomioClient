@@ -1,0 +1,12 @@
+extends ../layouts/blank
+
+block body
+    script(type='text/javascript', src= '/public.bundle.js')
+    #login-container
+        form#login-form
+            .input-wrapper
+                input#email-input(type='email')
+            .input-wrapper
+                input#password-input(type='password')
+            .input-wrapper
+                input#submit-button(type='submit', value='Login')

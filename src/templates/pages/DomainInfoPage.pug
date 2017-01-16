@@ -1,0 +1,27 @@
+extends ../layouts/default
+
+block body
+    #main-container
+        #sidebar
+            include ../includes/sidebar
+        #main-area
+            p= domain
+            p= '$' + price + ' for ' + period + (period > 1 ? ' months' : ' month')
+            p= 'Is Rented: ' + isRented
+            p Tags: !{tags}
+
+            if !isRented && !isMyDomain
+                a#rent-now-link(href=rentUrl) Rent now
+            if !isRented && isMyDomain === true
+                p domain is yours and not rented yet
+                p
+                    a#edit-domain-link(href=editUrl) Edit
+            if isRented === true && isMyDomain === true
+                p domain is yours and is rented now
+                p
+                    a#edit-domain-link(href=editUrl) Domain stats
+            if isRented === true && !isMyDomain
+                p domain is rented by someone already
+                p
+                    a#edit-domain-link(href=editUrl) Domain stats
+        #right-bar

@@ -1,0 +1,11 @@
+.domains-lists-container
+    //p= totalDomainsAvailableCount + ' Available Domains'
+    .domains-list
+        include listingHeader
+        ul#available-domains-list
+            each domain in domainsAvailable
+                li(class=domain.isMyDomain ? 'my-domain' : '')
+                    a(href= domain.domainInfoUrl)
+                        .column-domain-label= domain.domain
+                        .column-domain-price= '$' + domain.price
+                        .column-domain-period= domain.period + ' months'

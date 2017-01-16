@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Sign In to Domio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+<div id="root"
+     style="width: 500px; margin: 40px auto; padding: 10px; border-style: dashed; border-width: 1px; box-sizing: border-box;">
+</div>
+
+<!--[if IE 8]>
+<script src="//cdnjs.cloudflare.com/ajax/libs/ie8/0.2.5/ie8.js"></script>
+<![endif]-->
+
+<!--[if lte IE 9]>
+<script src="https://cdn.auth0.com/js/base64.js"></script>
+<script src="https://cdn.auth0.com/js/es5-shim.min.js"></script>
+<![endif]-->
+
+<script src="https://cdn.auth0.com/js/lock/10.2/lock.min.js"></script>
+<script>
+    var config = {
+        clientID: 'gVJEOF4f0Gold1pFzc1O1wAjbJbF1G2q',
+        auth0Domain: 'basharov.auth0.com',
+        callbackURL: 'http://localhost:4000'
+    };
+
+    var connection = config.connection;
+    var prompt = config.prompt;
+    var languageDictionary;
+    var language;
+    if (config.dict && config.dict.signin && config.dict.signin.title) {
+        languageDictionary = {title: config.dict.signin.title};
+    } else if (typeof config.dict === 'string') {
+        language = config.dict;
+    }
+
+    var lock = new Auth0Lock(config.clientID, config.auth0Domain, {
+        auth: {
+            redirect: false,
+            redirectUrl: config.callbackURL,
+            responseType: 'token',
+            params: config.internalOptions
+        },
+        assetsUrl: config.assetsUrl,
+        allowedConnections: connection ? [connection] : null,
+        rememberLastLogin: !prompt,
+        language: language,
+        languageDictionary: languageDictionary,
+        theme: {
+//            logo: 'YOUR LOGO HERE',
+            primaryColor: 'green'
+        },
+        closable: false, // uncomment if you want small buttons for social providers
+        container: 'root', // socialButtonStyle: 'small'
+    });
+
+    lock.on('authenticated', function (authResult) {
+        lock.getProfile(authResult.idToken, function (error, profile) {
+            if (error) {
+                return;
+            }
+            localStorage.setItem('idToken', authResult.idToken);
+            localStorage.setItem('profile', JSON.stringify(profile));
+
+            const idTokenCookie = 'idToken=' + authResult.idToken;
+            document.cookie = idTokenCookie;
+
+            const nameCookie = 'name=' + profile.name;
+            document.cookie = nameCookie;
+            window.location.href = '/'
+        });
+    });
+
+    lock.show();
+</script>
+</body>
+</html>
