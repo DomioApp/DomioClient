@@ -3,7 +3,7 @@ build
 server/server.app.js
 typings
 logs
-.idea/vcs.xml
+.idea
 utils/generateDomains.js
 .vscode
 npm-debug.log
