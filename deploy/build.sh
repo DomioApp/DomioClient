@@ -1,11 +1,9 @@
 #!/usr/bin/env bash
 set -e
 
-echo Building Domio...
-#rm -rf /domio
-#mkdir /domio
+echo Building Domio Client...
 
-cd ~/domiopublic
+cd ~/domioclient
 
 
 #=====================================================================================================================
@@ -21,24 +19,14 @@ echo "Hash:       ${hash}"
 echo "Version:    ${version}"
 echo ------------------------------------------------------
 
-go build -o /usr/local/bin/domio_public -ldflags "-X main.Buildstamp=$buildstamp -X main.Hash=$hash  -X main.Version=$version" domio_public
+#go build -o /usr/local/bin/domio_public -ldflags "-X main.Buildstamp=$buildstamp -X main.Hash=$hash  -X main.Version=$version" domio_public
+npm install
+npm start f
 
 #=====================================================================================================================
 
-#/usr/local/bin/domio_public init --aws-access-key-id=$AWS_ACCESS_KEY_ID \
-#                                 --aws-secret-access-key=$AWS_SECRET_ACCESS_KEY \
-#                                 --db-name=$DOMIO_DB_NAME \
-#                                 --db-user=$DOMIO_DB_USER \
-#                                 --db-password=$DOMIO_DB_PASSWORD
-
-/usr/local/bin/domio_public init --templates-folder=/usr/local/domio_public/templates
-
 cd /
-rm -rf ~/domiopublic
+rm -rf ~/domioclient
+echo Domio Client is built and ready!
 
-service domio_public stop
-service domio_public start
-
-echo Domio Public is built and ready!
-
-logger -n logs5.papertrailapp.com -t deploy -P 18422 -p user.notice "Domio Public is built and ready!"
+logger -n logs5.papertrailapp.com -t deploy -P 18422 -p user.notice "Domio Client is built and ready!"
