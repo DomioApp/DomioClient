@@ -48,7 +48,7 @@ deploy_staging:
     stage: deploy
     script:
       - echo "Deploy to staging server"
-      - ssh root@$DEPLOY_STAGING_IP "rm -rf ~/domioclient; git clone git@gitlab.com:basharov/DomioClient.git ~/domioclient; cd ~/domioclient; ./install.sh"
+      - ssh root@$DEPLOY_STAGING_IP "rm -rf ~/domioclient; git clone git@gitlab.com:basharov/DomioClient.git ~/domioclient; cd ~/domioclient; sh ./install.sh"
     environment:
       name: staging
       url: https://www.domio.in
