@@ -1,0 +1,1 @@
+psql domio_dev < ../../dbschema/domio_dev.sql
