@@ -1,0 +1,8 @@
+{
+  "resolution": "main",
+  "tree": {
+    "src": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/1df8038e7effe4b78619f9077e36a895a9c050d5/nes/nes.d.ts",
+    "raw": "registry:dt/nes#6.2.1+20160720062654",
+    "typings": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/1df8038e7effe4b78619f9077e36a895a9c050d5/nes/nes.d.ts"
+  }
+}
