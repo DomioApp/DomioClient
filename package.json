@@ -1,0 +1,44 @@
+{
+  "name": "domio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node build/server.bundle.js",
+    "f": "webpack --config webpack.frontend.config.js",
+    "b": "webpack --config webpack.backend.config.js",
+    "s": "stylus ./src/style/style.styl -o ./build/style.css",
+    "sw": "stylus -w ./src/style/style.styl -o ./build/style.css",
+    "lint": "tslint -c tslint.json {server,client}/**/*.ts",
+    "all": "npm run f & npm run b & npm run s",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Sergei Basharov <sergei@basharov.net> (http://basharov.net/)",
+  "license": "ISC",
+  "devDependencies": {
+    "axios": "^0.15.2",
+    "hapi": "^15.2.0",
+    "hapi-accept-language": "^1.0.1",
+    "hapi-auth-jwt": "^4.0.0",
+    "hoek": "^4.1.0",
+    "i18n": "^0.8.3",
+    "inert": "^4.0.2",
+    "joi": "^9.2.0",
+    "jsonwebtoken": "^7.1.9",
+    "lodash": "^4.16.4",
+    "moment": "^2.15.1",
+    "nes": "^6.3.1",
+    "path": "^0.12.7",
+    "pug": "^2.0.0-beta6",
+    "ts-loader": "^0.9.4",
+    "typescript": "^2.0.3",
+    "vision": "^4.1.0",
+    "webpack-node-externals": "^1.5.4",
+    "winston": "^2.2.0"
+  },
+  "dependencies": {
+    "hapi-error": "^1.4.1",
+    "tracer": "^0.8.7"
+  }
+}
