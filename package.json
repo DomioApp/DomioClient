@@ -7,8 +7,8 @@
     "start": "node build/server.bundle.js",
     "f": "webpack --config webpack.frontend.config.js",
     "b": "webpack --config webpack.backend.config.js",
-    "s": "stylus ./src/style/style.styl -o /usr/local/domio_client",
-    "sw": "stylus -w ./src/style/style.styl -o ./build/style.css",
+    "s": "./node_modules/.bin/stylus ./src/style/style.styl -o /usr/local/domio_client",
+    "sw": "./node_modules/.bin/stylus -w ./src/style/style.styl -o ./build/style.css",
     "lint": "tslint -c tslint.json {server,client}/**/*.ts",
     "all": "npm run f & npm run b & npm run s",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -31,6 +31,7 @@
     "nes": "^6.3.1",
     "path": "^0.12.7",
     "pug": "^2.0.0-beta6",
+    "stylus": "^0.54.5",
     "ts-loader": "^0.9.4",
     "typescript": "^2.0.3",
     "vision": "^4.1.0",
