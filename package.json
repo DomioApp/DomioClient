@@ -7,7 +7,7 @@
     "start": "node build/server.bundle.js",
     "f": "webpack --config webpack.frontend.config.js",
     "b": "webpack --config webpack.backend.config.js",
-    "s": "stylus ./src/style/style.styl -o ./build/style.css",
+    "s": "stylus ./src/style/style.styl -o /usr/local/domio_client",
     "sw": "stylus -w ./src/style/style.styl -o ./build/style.css",
     "lint": "tslint -c tslint.json {server,client}/**/*.ts",
     "all": "npm run f & npm run b & npm run s",
