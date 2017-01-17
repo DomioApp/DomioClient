@@ -10,6 +10,7 @@ fs.readdirSync('node_modules')
     .forEach(function (mod) {
         nodeModules[mod] = 'commonjs ' + mod;
     });
+
 module.exports = {
     target: 'web',
     entry: {
@@ -17,7 +18,8 @@ module.exports = {
         user: './src/client/Components/DomioUser.ts'
     },
     output: {
-        path: path.join(__dirname, 'build'),
+        // path: path.join(__dirname, 'build'),
+        path: '/usr/local/domio_client',
         filename: 'client.[name].bundle.js'
     },
     externals: nodeModules,
