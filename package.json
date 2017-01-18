@@ -4,9 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node build/server.bundle.js",
-    "f": "webpack --config webpack.frontend.config.js",
-    "b": "webpack --config webpack.backend.config.js",
+    "f": "./node_modules/.bin/webpack --config webpack.frontend.config.js",
+    "b": "./node_modules/.bin/webpack --config webpack.backend.config.js",
     "s": "./node_modules/.bin/stylus ./src/style/style.styl -o /usr/local/domio_client",
     "sw": "./node_modules/.bin/stylus -w ./src/style/style.styl -o ./build/style.css",
     "lint": "tslint -c tslint.json {server,client}/**/*.ts",

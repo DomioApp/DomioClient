@@ -41,6 +41,7 @@ go_build:
     script:
         - npm install
         - npm run f
+        - npm run s
     only:
     - tags
 
@@ -48,7 +49,7 @@ deploy_staging:
     stage: deploy
     script:
       - echo "Deploy to staging server"
-      - ssh root@$DEPLOY_STAGING_IP "rm -rf ~/domioclient; git clone git@gitlab.com:basharov/DomioClient.git ~/domioclient; cd ~/domioclient; sh ./install.sh"
+      - ssh root@$DEPLOY_STAGING_IP "rm -rf ~/domioclient; git clone git@gitlab.com:basharov/DomioClient.git ~/domioclient; cd ~/domioclient; sh ./deploy.sh"
     environment:
       name: staging
       url: https://www.domio.in
