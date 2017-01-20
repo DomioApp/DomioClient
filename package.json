@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "f": "./node_modules/.bin/webpack --config webpack.frontend.config.js",
+    "cw": "tsc -w",
     "b": "./node_modules/.bin/webpack --config webpack.backend.config.js",
     "s": "./node_modules/.bin/stylus ./src/style/style.styl -o /usr/local/domio_client",
-    "sw": "./node_modules/.bin/stylus -w ./src/style/style.styl -o ./build/style.css",
+    "sw": "./node_modules/.bin/stylus -w ./src/style/style.styl -o /usr/local/domio_client",
     "lint": "tslint -c tslint.json {server,client}/**/*.ts",
     "all": "npm run f & npm run b & npm run s",
     "test": "echo \"Error: no test specified\" && exit 1"

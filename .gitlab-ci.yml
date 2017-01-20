@@ -31,19 +31,19 @@ before_script:
 #    - ls $GO_PROJECT_PATH
 
 stages:
-    - build
+#    - build
     - deploy
 #    - verify
 #    - style
 
-go_build:
-    stage: build
-    script:
-        - npm install
-        - npm run f
-        - npm run s
-    only:
-    - tags
+#go_build:
+#    stage: build
+#    script:
+#        - npm install
+#        - npm run f
+#        - npm run s
+#    only:
+#    - tags
 
 deploy_staging:
     stage: deploy

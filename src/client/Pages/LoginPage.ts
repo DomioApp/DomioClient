@@ -1,8 +1,7 @@
-import {LoginManager} from "../Components/LoginManager";
-import {LocalStorage} from "../Components/LocalStorage";
 export class LoginPage {
     private form: HTMLFormElement;
 
+/*
     constructor(params: any) {
         this.init();
     }
@@ -10,12 +9,14 @@ export class LoginPage {
     public init(): void {
         this.initForm();
     }
+*/
 
     private initForm() {
         this.form = <HTMLFormElement> document.querySelector('#login-form');
         this.form.addEventListener('submit', (e: Event) => {
             e.preventDefault();
             const state = this.getState();
+/*
             LoginManager.login(state).then((authResult: any) => {
                 LocalStorage.saveData(authResult.id, authResult.userId);
 
@@ -27,22 +28,23 @@ export class LoginPage {
                 const userIdCookie = 'userId=' + authResult.userId;
                 document.cookie = userIdCookie;
 
-                /*
+                /!*
                  const accessTokenCookie = 'accessToken=' + authResult.access_token;
                  document.cookie = accessTokenCookie;
-                 */
+                 *!/
 
-                /*
+                /!*
                  const emailCookie = 'email=' + userProfile.email;
                  document.cookie = emailCookie;
 
-                 */
+                 *!/
                 // window.location.href = '/';
             })
                 .catch((err: any) => {
                     // console.log(err)
                 })
             ;
+*/
         });
     }
 
