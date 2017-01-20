@@ -26,10 +26,6 @@ npm install
 npm run b
 npm run s
 
-bundles_folder=/usr/local/domio_client
-mkdir -p ${bundles_folder}/scripts
-yes | mv -f ~/domioclient/src/domio/*.js ${bundles_folder}/scripts
-
 #=====================================================================================================================
 
 cd /
