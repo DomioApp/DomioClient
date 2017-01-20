@@ -5,7 +5,7 @@ bundles_folder=/usr/local/domio_client
 
 echo Copying scripts files...
 
-mkdir -p ${bundles_folder}
+mkdir -p ${bundles_folder}/scripts
 
 rm -rf ${bundles_folder}
 
