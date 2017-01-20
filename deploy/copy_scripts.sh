@@ -9,6 +9,6 @@ mkdir -p ${bundles_folder}
 
 rm -rf ${bundles_folder}
 
-yes | mv -f ~/domiopublic/src/domio ${bundles_folder}
+yes | mv -f ~/domioclient/src/domio ${bundles_folder}
 
 echo Scripts files copied!
