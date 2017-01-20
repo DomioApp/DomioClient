@@ -1,5 +1,7 @@
-'use strict';
+import {getStatus} from './api_connector';
 
-(function () {
-    console.log('login page')
-}());
+
+(() => {
+    console.log('login page');
+    console.log(getStatus())
+})();
