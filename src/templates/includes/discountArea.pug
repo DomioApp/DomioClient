@@ -1,7 +1,0 @@
-#discount-area-container
-    input#enable-discount-checkbox(type='checkbox', checked=isDiscountEnabled)
-    label(for='enable-discount-checkbox') Discount, %
-    input#domain-discount-input(type='number', autocomplete='off' step=1, min=10, max=90 value= discount && isDiscountEnabled ? discount : '', disabled=!isDiscountEnabled)
-    span#discount-result-area
-    if isDiscountEnabled
-        p Discounted price $#{price} - $#{price * (discount / 100)} = $#{discountedPrice}

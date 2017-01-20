@@ -1,5 +1,3 @@
-'use strict';
-
 function xhrRequest() {
     function reqListener() {
         console.log(JSON.parse(this.responseText));
