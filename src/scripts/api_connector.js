@@ -11,6 +11,5 @@ function xhrRequest() {
 
 
 export function getStatus() {
-    xhrRequest()
-    return "123";
+    xhrRequest();
 }

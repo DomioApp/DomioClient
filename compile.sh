@@ -18,5 +18,4 @@ echo "  Version:    ${version}"
 echo ---------------------------
 echo
 
-npm run b
-npm run s
+npm run all
