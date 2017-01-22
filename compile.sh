@@ -18,4 +18,9 @@ echo "  Version:    ${version}"
 echo ---------------------------
 echo
 
+
+echo "export function getAppInfo() { return '${version}' }" > src/scripts/app_info.js
+
 npm run all
+
+echo "export function getAppInfo() { return '%VERSION%' }" > src/scripts/app_info.js
