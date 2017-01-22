@@ -4,10 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "b": "webpack",
-    "s": "./node_modules/.bin/stylus ./src/style/style.styl -o /usr/local/domio_client",
-    "all": "npm run b && npm run s",
-    "sw": "./node_modules/.bin/stylus -w ./src/style/style.styl -o /usr/local/domio_client",
+    "compile": "webpack",
+    "minify": "NODE_ENV=production webpack",
+    "style": "./node_modules/.bin/stylus ./src/style/style.styl -o /usr/local/domio_client",
+    "all": "npm run compile && npm run style",
+    "style-watch": "./node_modules/.bin/stylus -w ./src/style/style.styl -o /usr/local/domio_client",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

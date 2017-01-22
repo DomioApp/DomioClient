@@ -1,5 +1,9 @@
 ﻿const path = require('path');
+const webpack = require('webpack');
+
 const BabiliPlugin = require("babili-webpack-plugin");
+
+const isProd = (process.env.NODE_ENV === 'production');
 
 module.exports = {
     entry: './src/scripts/app.js',
@@ -15,7 +19,18 @@ module.exports = {
             }
         ]
     },
-    plugins: [
-        new BabiliPlugin({})
-    ]
+    plugins: getPlugins()
 };
+
+function getPlugins() {
+    let plugins = [];
+
+    if (isProd) {
+        plugins = [
+            new BabiliPlugin({})
+        ]
+
+    }
+
+    return plugins
+}
