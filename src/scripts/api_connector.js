@@ -25,7 +25,7 @@ function sendSignupRequest(data) {
     const oReq = new XMLHttpRequest();
     oReq.addEventListener('load', reqListener);
     oReq.open("POST", "//api.domio.in/users");
-    oReq.send(data);
+    oReq.send(JSON.stringify(data));
 
     function reqListener() {
         console.log(JSON.parse(this.responseText));
