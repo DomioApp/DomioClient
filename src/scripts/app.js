@@ -1,4 +1,5 @@
 import {bindLoginPageEvents} from './login_page'
+import {bindSignupPageEvents} from './signup_page'
 import {getPageName} from './utils';
 
 init();
@@ -10,6 +11,10 @@ function init() {
     switch (page_name) {
         case 'LoginPage':
             bindLoginPageEvents();
+            break;
+
+        case 'SignupPage':
+            bindSignupPageEvents();
             break;
     }
 
