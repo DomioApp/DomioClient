@@ -5,7 +5,7 @@ export function collectFormData(form) {
 
     const elements = Array.prototype.slice.call(form.elements).reduce((accumulator, el) => {
 
-        if (el.type === 'text' || el.type === 'password') {
+        if (el.type === 'text' || el.type === 'email' || el.type === 'password') {
             accumulator[el.name] = el.value
         }
 
