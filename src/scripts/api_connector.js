@@ -14,12 +14,13 @@ export function getStatus() {
     xhrRequest();
 }
 
-export function sendApiRequest(requestName, data) {
+export function sendApiRequest(requestName, data, callback) {
+
     if (requestName === 'login') {
         sendLoginRequest(data)
     }
     else if (requestName === 'signup') {
-        sendSignupRequest(data)
+        sendSignupRequest(data, callback)
     }
 }
 
@@ -35,7 +36,7 @@ function sendLoginRequest(data) {
     }
 
 }
-function sendSignupRequest(data) {
+function sendSignupRequest(data, callback) {
 
     const oReq = new XMLHttpRequest();
     oReq.addEventListener('load', reqListener);
@@ -44,6 +45,7 @@ function sendSignupRequest(data) {
 
     function reqListener() {
         console.log(JSON.parse(this.responseText));
+        callback()
     }
 
 }
