@@ -19,7 +19,7 @@ export function sendApiRequest(requestName, data) {
         sendLoginRequest(data)
     }
     else if (requestName === 'signup') {
-        sendLoginRequest(data)
+        sendSignupRequest(data)
     }
 }
 
