@@ -10,6 +10,6 @@ export function bindLoginPageEvents() {
         e.preventDefault();
 
         const formData = collectFormData(form)
-        sendApiRequest('signup', formData)
+        sendApiRequest('login', formData)
     }
 }

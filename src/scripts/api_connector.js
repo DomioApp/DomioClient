@@ -15,16 +15,16 @@ export function getStatus() {
 }
 
 export function sendApiRequest(requestName, data) {
-    if (requestName === 'signup') {
-        sendSignupRequest(data)
+    if (requestName === 'login') {
+        sendLoginRequest(data)
     }
 }
 
-function sendSignupRequest(data) {
+function sendLoginRequest(data) {
 
     const oReq = new XMLHttpRequest();
     oReq.addEventListener('load', reqListener);
-    oReq.open("POST", "//api.domio.in/users");
+    oReq.open("POST", "//api.domio.in/users/login");
     oReq.send(JSON.stringify(data));
 
     function reqListener() {
