@@ -19,7 +19,7 @@ echo ---------------------------
 echo
 
 
-echo "export function getAppInfo() { return '${version}' }" > src/scripts/app_info.js
+echo "export function getAppInfo() { return {version: '${version}', env: 'dev', api_url: '//localhost:8080'} }" > src/scripts/app_info.js
 
 npm run all
 

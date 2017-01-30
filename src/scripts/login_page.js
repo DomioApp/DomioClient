@@ -10,8 +10,12 @@ export function bindLoginPageEvents() {
         e.preventDefault();
 
         const formData = collectFormData(form);
-        sendApiRequest('login', formData, () => {
-            window.location = '/profile';
+
+        sendApiRequest('login', formData, (xhr) => {
+            if (xhr.status === 200) {
+                window.location = '/profile';
+            }
+
         })
     }
 }

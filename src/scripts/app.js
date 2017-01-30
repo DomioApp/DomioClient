@@ -7,8 +7,7 @@ init();
 
 
 function init() {
-
-    console.log(getAppInfo());
+    window.getAppInfo = getAppInfo;
 
     const page_name = getPageName();
 
@@ -21,7 +20,4 @@ function init() {
             bindSignupPageEvents();
             break;
     }
-
-    console.log(`Page name: ${page_name}`);
-
 }
