@@ -1,13 +1,8 @@
-import {bindLoginPageEvents} from './login_page'
-import {bindSignupPageEvents} from './signup_page'
-import {getPageName} from './utils';
-import {getAppInfo} from './app_info';
-
 init();
 
 
 function init() {
-    window.getAppInfo = getAppInfo;
+    window['getAppInfo'] = getAppInfo;
 
     const page_name = getPageName();
 
