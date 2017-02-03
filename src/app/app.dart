@@ -10,17 +10,12 @@ main() {
         var form = querySelector('form') as FormElement;
         form.onSubmit.listen(handleSubmit);
     }
+    if (page == 'AddDomainPage') {
+        var form = querySelector('form') as FormElement;
+        form.onSubmit.listen(handleSubmit);
+    }
 }
 
-handleSubmit(Event event) {
-    var form = event.target as FormElement;
-    var email = form.querySelector('input[name="email"]') as InputElement;
-    print(email.value);
-    loadData();
-
-    event.preventDefault();
-    event.stopPropagation();
-}
 
 void loadData() {
     var url = "//127.0.0.1:8080";
