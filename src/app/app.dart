@@ -8,7 +8,6 @@ main() {
     print(page);
     if (page == 'LoginPage') {
         var form = querySelector('form') as FormElement;
-//        label.text = 'Wake up, sleepy head!';
         form.onSubmit.listen(handleSubmit);
     }
 }
@@ -24,7 +23,7 @@ handleSubmit(Event event) {
 }
 
 void loadData() {
-    var url = "http://127.0.0.1:8080";
+    var url = "//127.0.0.1:8080";
 
     var request = HttpRequest.getString(url).then(onDataLoaded);
 }
