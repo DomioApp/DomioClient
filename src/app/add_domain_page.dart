@@ -1,10 +1,19 @@
 import 'dart:html';
+import 'api_connector.dart';
+
+initAddDomainPage() {
+    print('AddDomainPage initPage');
+
+    var form = querySelector('form') as FormElement;
+    form.onSubmit.listen(handleSubmit);
+}
 
 handleSubmit(Event event) {
     var form = event.target as FormElement;
-    var email = form.querySelector('input[name="email"]') as InputElement;
+    var email = form.querySelector('input[name="name"]') as InputElement;
     print(email.value);
-    loadData();
+
+    sendRequest();
 
     event.preventDefault();
     event.stopPropagation();
