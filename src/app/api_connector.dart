@@ -1,10 +1,25 @@
 import 'dart:html';
 import 'dart:convert';
+import 'dart:convert' show JSON;
 
 
 void onDataLoaded(String resp) {
     Map decoded = JSON.decode(resp);
     print(decoded['app_version']);
+}
+
+class TokenResp {
+    String email;
+    String token;
+    String id;
+
+    TokenResp(String response) {
+        var resp = JSON.decode(response);
+
+        email = resp['email'];
+        token = resp['token'];
+        id = resp['id'];
+    }
 }
 
 void sendRequest(String email, String password) {
@@ -16,8 +31,7 @@ void sendRequest(String email, String password) {
     request.onReadyStateChange.listen((_) {
         if (request.readyState == HttpRequest.DONE &&
             (request.status == 200 || request.status == 0)) {
-            // data saved OK.
-            print(request.responseText); // output the response from the server
+            var token = new TokenResp(request.responseText);
         }
     });
 
@@ -27,7 +41,9 @@ void sendRequest(String email, String password) {
 
     request.setRequestHeader('Content-Type', 'application/json');
 
-    String jsonData = '{"email":"' + email + '", "password":"' + password + '"}';
+    var data = {'email': email, 'password': password};
+
+    String jsonData = JSON.encode(data);
 
     request.send(jsonData); // perform the async POST
 }
