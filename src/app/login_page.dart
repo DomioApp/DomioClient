@@ -1,21 +1,32 @@
 import 'dart:html';
 import 'api_connector.dart';
+import 'page.dart';
 
-initLoginPage() {
-    print('LoginPage initPage');
+class LoginPage implements Page {
+    FormElement form;
 
-    var form = querySelector('form') as FormElement;
-    form.onSubmit.listen(handleSubmit);
-}
+    LoginPage() {
+        init();
+        bindEvents();
+    }
 
-handleSubmit(Event event) {
+    init() {
+        form = querySelector('form') as FormElement;
+        print(runtimeType);
+    }
 
-    event.preventDefault();
-    event.stopPropagation();
+    bindEvents() {
+        form.onSubmit.listen(handleSubmit);
+    }
 
-    var form = event.target as FormElement;
-    var email = form.querySelector('input[name="email"]') as InputElement;
-    var password = form.querySelector('input[name="password"]') as InputElement;
+    handleSubmit(Event event) {
+        event.preventDefault();
+        event.stopPropagation();
 
-    sendRequest(email.value, password.value);
+        var email = form.querySelector('input[name="email"]') as InputElement;
+        var password = form.querySelector(
+            'input[name="password"]') as InputElement;
+
+        sendRequest(email.value, password.value);
+    }
 }

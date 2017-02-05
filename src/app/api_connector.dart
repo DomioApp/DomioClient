@@ -8,17 +8,21 @@ void onDataLoaded(String resp) {
     print(decoded['app_version']);
 }
 
-class TokenResp {
+class Token {
     String email;
     String token;
     String id;
 
-    TokenResp(String response) {
-        var resp = JSON.decode(response);
+    Token.fromJsonString(String jsonString) {
+        var resp = JSON.decode(jsonString);
 
         email = resp['email'];
         token = resp['token'];
         id = resp['id'];
+
+        if (email == null || token == null || id == null) {
+            throw new StateError('one of fields is empty');
+        }
     }
 }
 
@@ -31,7 +35,8 @@ void sendRequest(String email, String password) {
     request.onReadyStateChange.listen((_) {
         if (request.readyState == HttpRequest.DONE &&
             (request.status == 200 || request.status == 0)) {
-            var token = new TokenResp(request.responseText);
+            var token = new Token.fromJsonString(request.responseText);
+            print(token.id);
         }
     });
 

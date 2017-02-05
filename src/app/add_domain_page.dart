@@ -1,20 +1,33 @@
 import 'dart:html';
 import 'api_connector.dart';
+import 'page.dart';
 
-initAddDomainPage() {
-    print('AddDomainPage initPage');
+class AddDomainPage implements Page {
+    FormElement form;
 
-    var form = querySelector('form') as FormElement;
-    form.onSubmit.listen(handleSubmit);
-}
+    AddDomainPage() {
+        init();
+        bindEvents();
+    }
 
-handleSubmit(Event event) {
-    var form = event.target as FormElement;
-    var email = form.querySelector('input[name="name"]') as InputElement;
-    print(email.value);
+    init() {
+        form = querySelector('form') as FormElement;
+        print(runtimeType);
+    }
 
-    sendRequest();
+    bindEvents() {
+        form.onSubmit.listen(handleSubmit);
+    }
 
-    event.preventDefault();
-    event.stopPropagation();
+    handleSubmit(Event event) {
+        event.preventDefault();
+        event.stopPropagation();
+
+        var email = form.querySelector(
+            'input[name="name"]') as InputElement;
+        print(email.value);
+
+//    sendRequest();
+    }
+
 }
