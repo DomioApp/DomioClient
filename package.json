@@ -16,10 +16,7 @@
   "author": "Sergei Basharov <sergei@basharov.net> (http://basharov.net/)",
   "license": "ISC",
   "devDependencies": {
-    "babel-preset-babili": "0.0.10",
-    "babili-webpack-plugin": "0.0.7",
     "jsonwebtoken": "^7.1.9",
-    "stylus": "^0.54.5",
-    "webpack": "2.2.0"
+    "stylus": "^0.54.5"
   }
 }

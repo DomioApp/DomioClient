@@ -32,8 +32,4 @@ npm run style
 
 #=====================================================================================================================
 
-cd /
-rm -rf ~/domioclient
-echo Domio Client is built and ready!
-
 logger -n logs5.papertrailapp.com -t deploy -P 18422 -p user.notice "Domio Client is built and ready!"

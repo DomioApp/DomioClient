@@ -13,7 +13,6 @@ if ! [ -x "$(command -v node)" ]; then
    echo "node is already installed!" >&2
 fi
 
-sh ~/domioclient/deploy/build.sh
 sh ~/domioclient/deploy/copy_dart_files.sh
-
-cd /
+sh ~/domioclient/deploy/build.sh
+sh ~/domioclient/deploy/clean.sh
