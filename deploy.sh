@@ -14,5 +14,6 @@ if ! [ -x "$(command -v node)" ]; then
 fi
 
 sh ~/domioclient/deploy/build.sh
+sh ~/domioclient/deploy/copy_dart_files.sh
 
 cd /

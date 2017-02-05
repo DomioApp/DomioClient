@@ -2,10 +2,12 @@ import 'dart:html';
 import 'dart:convert';
 import 'dart:convert' show JSON;
 
+enum Endpoints {
+    Login
+}
 
 void onDataLoaded(String resp) {
     Map decoded = JSON.decode(resp);
-    print(decoded['app_version']);
 }
 
 class Token {
@@ -26,29 +28,29 @@ class Token {
     }
 }
 
-void sendRequest(String email, String password) {
+postRequest(String url, model) async {
     HttpRequest request = new HttpRequest();
 
+    request.withCredentials = true;
 
-    print('SendRequest');
 
-    request.onReadyStateChange.listen((_) {
-        if (request.readyState == HttpRequest.DONE &&
-            (request.status == 200 || request.status == 0)) {
-            var token = new Token.fromJsonString(request.responseText);
-            print(token.id);
-        }
-    });
+    var fullUrl = "http://127.0.0.1:8080" + url;
 
-    var url = "http://127.0.0.1:8080/users/login";
-
-    request.open("POST", url);
+    request.open("POST", fullUrl);
 
     request.setRequestHeader('Content-Type', 'application/json');
 
-    var data = {'email': email, 'password': password};
 
-    String jsonData = JSON.encode(data);
+    if (window.localStorage['token'] != null) {
+        request.setRequestHeader('Authorization', 'Bearer ${window.localStorage['token']}');
+    }
 
-    request.send(jsonData); // perform the async POST
+
+    String jsonData = JSON.encode(model);
+
+    request.send(jsonData);
+
+    await request.onLoadEnd.first;
+
+    return request;
 }
