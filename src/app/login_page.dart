@@ -61,7 +61,6 @@ class LoginPage implements Page {
             document.cookie = 'email=${token.email}';
 
             window.location.assign('https://domio.in/profile/domains');
-            print(token.id);
         }
     }
 
