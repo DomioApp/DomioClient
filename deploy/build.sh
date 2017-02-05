@@ -23,12 +23,12 @@ mkdir -p /usr/local/domio_client
 
 #go build -o /usr/local/bin/domio_public -ldflags "-X main.Buildstamp=$buildstamp -X main.Hash=$hash  -X main.Version=$version" domio_public
 
-echo "export function getAppInfo() { return '${version}' }" > src/scripts/app_info.js
+#echo "export function getAppInfo() { return '${version}' }" > src/scripts/app_info.js
 
 npm install
-npm run all
+npm run style
 
-echo "export function getAppInfo() { return '%VERSION%' }" > src/scripts/app_info.js
+#echo "export function getAppInfo() { return '%VERSION%' }" > src/scripts/app_info.js
 
 #=====================================================================================================================
 
