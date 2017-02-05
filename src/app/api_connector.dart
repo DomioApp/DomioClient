@@ -34,7 +34,7 @@ postRequest(String url, model) async {
     request.withCredentials = true;
 
 
-    var fullUrl = "" + url;
+    var fullUrl = "https://api.domio.in" + url;
 
     request.open("POST", fullUrl);
 
