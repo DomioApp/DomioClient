@@ -19,8 +19,8 @@ echo ---------------------------
 echo
 
 
-echo "export function getAppInfo() { return {version: '${version}', env: 'dev', api_url: '//localhost:8080'} }" > src/scripts/app_info.js
+#echo "export function getAppInfo() { return {version: '${version}', env: 'dev', api_url: '//localhost:8080'} }" > src/scripts/app_info.js
 
-npm run all
+npm run style
 
-echo "export function getAppInfo() { return '%VERSION%' }" > src/scripts/app_info.js
+#echo "export function getAppInfo() { return '%VERSION%' }" > src/scripts/app_info.js

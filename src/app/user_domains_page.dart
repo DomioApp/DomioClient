@@ -2,7 +2,7 @@ import 'dart:html';
 import 'api_connector.dart';
 import 'page.dart';
 
-class AddDomainPageModel {
+class UserDomainsPageModel {
     String name;
     num price_per_month;
 
@@ -12,34 +12,27 @@ class AddDomainPageModel {
             ..['price_per_month'] = price_per_month;
 }
 
-class AddDomainPage implements Page {
-    FormElement form;
-    TextInputElement nameInput;
-    TextInputElement priceInput;
-    AddDomainPageModel model;
+class UserDomainsPage implements Page {
+    ElementList<ButtonElement> deleteButtonsList;
+    UserDomainsPageModel model;
 
-    AddDomainPage() {
+    UserDomainsPage() {
         init();
         bindElements();
         bindEvents();
     }
 
     init() {
-        model = new AddDomainPageModel();
+        model = new UserDomainsPageModel();
         print(runtimeType);
     }
 
     bindElements() {
-        form = querySelector('form');
-        nameInput = form.querySelector('input[name="name"]');
-        priceInput = form.querySelector('input[name="price_per_month"]');
+        deleteButtonsList = querySelectorAll('.b-delete-domain-button');
     }
 
     bindEvents() {
-        form.onSubmit.listen(handleSubmit);
-
-        nameInput.onChange.listen(updateModel);
-        priceInput.onChange.listen(updateModel);
+        deleteButtonsList.onClick.listen(deleteDomain);
     }
 
     handleSubmit(Event event) async {
@@ -66,6 +59,23 @@ class AddDomainPage implements Page {
             case 'price_per_month':
                 model.price_per_month = num.parse(input.value);
                 break;
+        }
+    }
+
+    deleteDomain(Event event) async {
+        event.preventDefault();
+        event.stopPropagation();
+
+        ButtonElement button = event.target;
+        print(button.value);
+
+        HttpRequest request = await deleteRequest('/domains/${button.value}');
+
+        window.console.log(request.response);
+
+        if (request.readyState == HttpRequest.DONE &&
+            (request.status == 200 || request.status == 0)) {
+            print(request.response);
         }
     }
 }
