@@ -60,7 +60,7 @@ class LoginPage implements Page {
             document.cookie = 'token=${token.token}';
             document.cookie = 'email=${token.email}';
 
-
+            window.location.assign('https://domio.in/profile/domains');
             print(token.id);
         }
     }
