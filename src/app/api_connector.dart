@@ -34,7 +34,7 @@ postRequest(String url, model) async {
     request.withCredentials = true;
 
 
-    var fullUrl = "http://127.0.0.1:8080" + url;
+    var fullUrl = "" + url;
 
     request.open("POST", fullUrl);
 
