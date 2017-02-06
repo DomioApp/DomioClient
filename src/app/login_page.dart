@@ -47,7 +47,12 @@ class LoginPage implements Page {
         event.preventDefault();
         event.stopPropagation();
 
-        HttpRequest request = await postRequest('/users/login', model);
+        window.console.log(getState());
+
+        HttpRequest request = await postRequest('/users/login', getState());
+
+        window.console.log(model);
+
         window.console.log(request.response);
 
         if (request.readyState == HttpRequest.DONE &&
@@ -62,6 +67,13 @@ class LoginPage implements Page {
 
             window.location.assign('https://domio.in/profile/domains');
         }
+    }
+
+    getState() {
+        return {
+            'email': '${emailInput.value}',
+            'password': '${passwordInput.value}'
+        };
     }
 
     updateModel(Event event) {
