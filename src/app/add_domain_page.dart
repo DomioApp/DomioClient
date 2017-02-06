@@ -51,7 +51,7 @@ class AddDomainPage implements Page {
 
         if (request.readyState == HttpRequest.DONE &&
             (request.status == 200 || request.status == 0)) {
-            print(request.response);
+            window.location.assign('https://domio.in/profile/domains');
         }
     }
 
