@@ -76,6 +76,7 @@ class UserDomainsPage implements Page {
         if (request.readyState == HttpRequest.DONE &&
             (request.status == 200 || request.status == 0)) {
             print(request.response);
+            document.querySelector('div[data-domain="${button.value}"]').remove();
         }
     }
 }
