@@ -2,6 +2,7 @@ import 'utils.dart';
 
 import 'add_domain_page.dart';
 import 'login_page.dart';
+import 'signup_page.dart';
 import 'user_domains_page.dart';
 
 main() {
@@ -11,6 +12,10 @@ main() {
     switch (pageName) {
         case 'LoginPage':
             page = new LoginPage();
+            break;
+
+        case 'SignupPage':
+            page = new SignupPage();
             break;
 
         case 'AddDomainPage':
