@@ -52,7 +52,7 @@ class AddDomainPage implements Page {
 
         if (request.readyState == HttpRequest.DONE &&
             (request.status == 200 || request.status == 0)) {
-            window.location.assign('${baseUrl}/profile/domains');
+            window.location.assign('${siteUrl}/profile/domains');
         }
     }
 

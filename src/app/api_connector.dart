@@ -34,7 +34,7 @@ postRequest(String url, model) async {
     request.withCredentials = true;
 
 
-    var fullUrl = '${baseUrl}${url}';
+    var fullUrl = '${apiUrl}${url}';
 
     request.open("POST", fullUrl);
 
@@ -62,7 +62,7 @@ deleteRequest(String url) async {
     request.withCredentials = true;
 
 
-    var fullUrl = '${baseUrl}${url}';
+    var fullUrl = '${apiUrl}${url}';
 
     request.open("DELETE", fullUrl);
 

@@ -61,7 +61,7 @@ class SignupPage implements Page {
             document.cookie = 'token=${token.token}';
             document.cookie = 'email=${token.email}';
 
-            window.location.assign('${baseUrl}/profile/domains');
+            window.location.assign('${siteUrl}/profile/domains');
         }
     }
 

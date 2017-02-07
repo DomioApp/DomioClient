@@ -3,5 +3,5 @@
 //     or replace with the correct one.
 
 
-//String baseUrl = "https://api.domio.in";
-//String baseUrl = "http://127.0.0.1:8080";
+//String apiUrl = "http://127.0.0.1:8080";
+//String siteUrl = "http://127.0.0.1:8090";
