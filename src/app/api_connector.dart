@@ -7,7 +7,7 @@ enum Endpoints {
 }
 
 void onDataLoaded(String resp) {
-    Map decoded = JSON.decode(resp);
+//    Map decoded = JSON.decode(resp);
 }
 
 class Token {

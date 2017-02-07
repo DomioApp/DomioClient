@@ -1,6 +1,7 @@
 import 'dart:html';
-import 'api_connector.dart';
 import 'page.dart';
+import './config.dart';
+import 'api_connector.dart';
 
 class AddDomainPageModel {
     String name;
@@ -51,7 +52,7 @@ class AddDomainPage implements Page {
 
         if (request.readyState == HttpRequest.DONE &&
             (request.status == 200 || request.status == 0)) {
-            window.location.assign('https://domio.in/profile/domains');
+            window.location.assign('${baseUrl}/profile/domains');
         }
     }
 

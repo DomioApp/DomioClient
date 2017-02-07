@@ -1,6 +1,7 @@
 import 'dart:html';
 import 'api_connector.dart';
 import 'page.dart';
+import './config.dart';
 
 class SignupPageModel {
     String email;
@@ -60,7 +61,7 @@ class SignupPage implements Page {
             document.cookie = 'token=${token.token}';
             document.cookie = 'email=${token.email}';
 
-            window.location.assign('https://domio.in/profile/domains');
+            window.location.assign('${baseUrl}/profile/domains');
         }
     }
 
