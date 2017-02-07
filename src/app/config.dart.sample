@@ -1,0 +1,7 @@
+//  1. Copy this file to config.dart.
+//  2. Uncomment the one that is needed for current env,
+//     or replace with the correct one.
+
+
+//String baseUrl = "https://api.domio.in";
+//String baseUrl = "http://127.0.0.1:8080";

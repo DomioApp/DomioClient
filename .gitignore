@@ -7,3 +7,4 @@ utils/generateDomains.js
 .vscode
 npm-debug.log
 server/awskey.ts
+src/app/config.dart

@@ -1,9 +1,6 @@
 import 'dart:html';
-import 'dart:convert';
 import 'dart:convert' show JSON;
-
-String baseUrl = "https://api.domio.in";
-//String baseUrl = "http://127.0.0.1:8080";
+import './config.dart';
 
 enum Endpoints {
     Login
@@ -45,7 +42,8 @@ postRequest(String url, model) async {
 
 
     if (window.localStorage['token'] != null) {
-        request.setRequestHeader('Authorization', 'Bearer ${window.localStorage['token']}');
+        request.setRequestHeader(
+            'Authorization', 'Bearer ${window.localStorage['token']}');
     }
 
 
@@ -72,7 +70,8 @@ deleteRequest(String url) async {
 
 
     if (window.localStorage['token'] != null) {
-        request.setRequestHeader('Authorization', 'Bearer ${window.localStorage['token']}');
+        request.setRequestHeader(
+            'Authorization', 'Bearer ${window.localStorage['token']}');
     }
 
 
