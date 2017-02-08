@@ -5,6 +5,7 @@ import 'login_page.dart';
 import 'signup_page.dart';
 import 'profile_page.dart';
 import 'user_domains_page.dart';
+import 'domain_edit_page.dart';
 
 main() {
     var pageName = getPageName();
@@ -29,6 +30,10 @@ main() {
 
         case 'UserDomainsPage':
             page = new UserDomainsPage();
+            break;
+
+        case 'DomainEditPage':
+            page = new DomainEditPage();
             break;
 
         default:
