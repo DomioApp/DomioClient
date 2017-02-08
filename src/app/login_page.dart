@@ -16,6 +16,7 @@ class LoginPageModel {
 
 class LoginPage implements Page {
     FormElement form;
+    DivElement errorMessageContainer;
     EmailInputElement emailInput;
     PasswordInputElement passwordInput;
     LoginPageModel model;
@@ -35,6 +36,8 @@ class LoginPage implements Page {
         form = querySelector('form') as FormElement;
         emailInput = form.querySelector('input[name="email"]');
         passwordInput = form.querySelector('input[name="password"]');
+        errorMessageContainer =
+            form.querySelector('.b-error-message-container');
     }
 
     bindEvents() {
@@ -56,18 +59,27 @@ class LoginPage implements Page {
 
         window.console.log(request.response);
 
-        if (request.readyState == HttpRequest.DONE &&
-            (request.status == 200 || request.status == 0)) {
-            var token = new Token.fromJsonString(request.responseText);
+        if (request.readyState == HttpRequest.DONE)
+            if (request.status == 200 || request.status == 0) {
+                var token = new Token.fromJsonString(request.responseText);
 
-            window.localStorage['token'] = token.token;
-            window.localStorage['email'] = token.email;
+                window.localStorage['token'] = token.token;
+                window.localStorage['email'] = token.email;
 
-            document.cookie = 'token=${token.token}';
-            document.cookie = 'email=${token.email}';
+                document.cookie = 'token=${token.token}';
+                document.cookie = 'email=${token.email}';
 
-            window.location.assign('${siteUrl}/profile/domains');
+                window.location.assign('${siteUrl}/profile/domains');
+            }
+        if (request.status == 401 || request.status == 0) {
+            showError();
         }
+    }
+
+    showError() {
+        errorMessageContainer.style.display = 'block';
+        errorMessageContainer.text =
+        "Couldn't login. Please check your email and password";
     }
 
     getState() {
