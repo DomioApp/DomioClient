@@ -13,6 +13,13 @@ if ! [ -x "$(command -v node)" ]; then
    echo "node is already installed!" >&2
 fi
 
+if ! [ -x "$(command -v dart)" ]; then
+   echo 'Dart is not installed.' >&2
+   sh ~/domioclient/deploy/install_dart.sh
+  else
+   echo "Dart is already installed!" >&2
+fi
+
 sh ~/domioclient/deploy/copy_dart_files.sh
 sh ~/domioclient/deploy/build.sh
 sh ~/domioclient/deploy/clean.sh
