@@ -22,5 +22,7 @@ echo
 #echo "export function getAppInfo() { return {version: '${version}', env: 'dev', api_url: '//localhost:8080'} }" > src/scripts/app_info.js
 
 npm run style
+/cygdrive/c/dart-sdk/bin/pub.bat get
+/cygdrive/c/dart-sdk/bin/pub.bat build src/app --output=/usr/local/domio_client/js
 
 #echo "export function getAppInfo() { return '%VERSION%' }" > src/scripts/app_info.js
