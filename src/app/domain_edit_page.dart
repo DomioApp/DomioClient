@@ -17,6 +17,9 @@ class DomainEditPage implements Page {
     FormElement form;
     TextInputElement nameInput;
     TextInputElement priceInput;
+    RadioButtonInputElement visibilityInput;
+    ButtonElement deleteButton;
+
     DomainEditPageModel model;
     String domainName;
 
@@ -33,17 +36,17 @@ class DomainEditPage implements Page {
 
     bindElements() {
         form = querySelector('form');
-
         HiddenInputElement domainNameInput = form.querySelector('input[name="domain_name"]');
-        domainName = domainNameInput.value;
-
+        deleteButton = querySelector('.b-delete-domain-button');
         priceInput = form.querySelector('input[name="price_per_month"]');
+
+        domainName = domainNameInput.value;
     }
 
     bindEvents() {
         form.onSubmit.listen(handleSubmit);
-
         priceInput.onChange.listen(updateModel);
+        deleteButton.onClick.listen(deleteDomain);
     }
 
     handleSubmit(Event event) async {
@@ -56,7 +59,6 @@ class DomainEditPage implements Page {
         if (request.readyState == HttpRequest.DONE &&
             (request.status == 200 || request.status == 0)) {
             print("domain saved");
-//            window.location.assign('${siteUrl}/profile/domains');
         }
     }
 
@@ -71,9 +73,30 @@ class DomainEditPage implements Page {
     }
 
     getState() {
+        visibilityInput = form.querySelector('input[name="visible"]:checked');
+
         return {
             'price_per_month': int.parse(priceInput.value),
+            'is_visible': visibilityInput.value == 'visible',
         };
     }
+
+    deleteDomain(Event event) async {
+        event.preventDefault();
+        event.stopPropagation();
+
+        ButtonElement button = event.target;
+        print(button.value);
+
+        HttpRequest request = await deleteRequest('/domains/${button.value}');
+
+        window.console.log(request.response);
+
+        if (request.readyState == HttpRequest.DONE &&
+            (request.status == 200 || request.status == 0)) {
+            window.location.assign('${siteUrl}/profile/domains');
+        }
+    }
+
 
 }

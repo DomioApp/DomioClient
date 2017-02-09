@@ -13,7 +13,6 @@ class UserDomainsPageModel {
 }
 
 class UserDomainsPage implements Page {
-    ElementList<ButtonElement> deleteButtonsList;
     UserDomainsPageModel model;
 
     UserDomainsPage() {
@@ -28,11 +27,11 @@ class UserDomainsPage implements Page {
     }
 
     bindElements() {
-        deleteButtonsList = querySelectorAll('.b-delete-domain-button');
+
     }
 
     bindEvents() {
-        deleteButtonsList.onClick.listen(deleteDomain);
+
     }
 
     handleSubmit(Event event) async {
@@ -59,24 +58,6 @@ class UserDomainsPage implements Page {
             case 'price_per_month':
                 model.price_per_month = num.parse(input.value);
                 break;
-        }
-    }
-
-    deleteDomain(Event event) async {
-        event.preventDefault();
-        event.stopPropagation();
-
-        ButtonElement button = event.target;
-        print(button.value);
-
-        HttpRequest request = await deleteRequest('/domains/${button.value}');
-
-        window.console.log(request.response);
-
-        if (request.readyState == HttpRequest.DONE &&
-            (request.status == 200 || request.status == 0)) {
-            print(request.response);
-            document.querySelector('div[data-domain="${button.value}"]').remove();
         }
     }
 }
