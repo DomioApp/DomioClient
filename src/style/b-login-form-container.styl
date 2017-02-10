@@ -24,6 +24,7 @@
                 flex-grow 1
                 padding 0 5px
                 min-width 200px
+
     .b-error-message-container
         font-size 0.8em
         background-color rgba(255, 0, 0, 0.1)
@@ -32,3 +33,32 @@
         padding 10px
         margin 0 0 10px 0
         display none
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2)
+    .b-login-form-container
+        form
+            max-width initial
+        form
+            label
+                color #666
+            input[type="submit"]
+                display block
+        .b-actions-area
+            display flex
+            flex-direction column
+            justify-content center
+
+            input[type="submit"]
+                margin-bottom 20px
+                padding 15px 0
+                background #496bff
+                border 0
+                border-radius 4px
+                color #fff
+                font-size 1em
+
+            a
+                display block
+                text-align center
+                font-size 0.8em
+                color #2c60ff
