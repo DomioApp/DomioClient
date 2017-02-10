@@ -30,7 +30,7 @@ npm run style
 
 pub get
 #pub build src/app --output=/usr/local/domio_client/js
-pub build src/app
+pub build ../src/app
 mv -f ./build/src/app/app.dart.js /usr/local/domio_client/app.dart.js
 
 #echo "export function getAppInfo() { return '%VERSION%' }" > src/scripts/app_info.js
