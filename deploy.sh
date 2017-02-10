@@ -20,6 +20,8 @@ if ! [ -x "$(command -v dart)" ]; then
    echo "Dart is already installed!" >&2
 fi
 
+export PATH=/usr/lib/dart/bin:${PATH}
+
 sh ~/domioclient/deploy/copy_dart_files.sh
 sh ~/domioclient/deploy/build.sh
 sh ~/domioclient/deploy/clean.sh
