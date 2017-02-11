@@ -10,6 +10,7 @@ import 'domain_edit_page.dart';
 import 'add_payment_source_page.dart';
 import 'payment_source_page.dart';
 import 'create_subscription_page.dart';
+import 'subscription_page.dart';
 
 ButtonElement toggleMenuButton;
 DivElement menu;
@@ -58,8 +59,12 @@ main() {
             page = new CreateSubscriptionPage();
             break;
 
+        case 'SubscriptionPage':
+            page = new SubscriptionPage();
+            break;
+
         default:
-            print('Page is not initialized');
+            window.console.warn('Page is not initialized');
             break;
     }
 }
