@@ -7,6 +7,7 @@ import 'signup_page.dart';
 import 'profile_page.dart';
 import 'user_domains_page.dart';
 import 'domain_edit_page.dart';
+import 'add_payment_source_page.dart';
 
 ButtonElement toggleMenuButton;
 DivElement menu;
@@ -41,6 +42,10 @@ main() {
 
         case 'DomainEditPage':
             page = new DomainEditPage();
+            break;
+
+        case 'AddPaymentSourcePage':
+            page = new AddPaymentSourcePage();
             break;
 
         default:
