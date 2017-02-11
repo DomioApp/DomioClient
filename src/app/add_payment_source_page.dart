@@ -72,18 +72,19 @@ class AddPaymentSourcePage implements Page {
         if (request.readyState == HttpRequest.DONE &&
             (request.status == 200 || request.status == 0)) {
             print("card saved");
+            window.location.assign('/profile/payments');
         }
     }
 
-//    updateModel(Event event) {
-//        InputElement input = event.target;
-//
-//        switch (input.name) {
-//            case 'price_per_month':
-//                model.expiry_month = num.parse(input.value);
-//                break;
-//        }
-//    }
+    updateModel(Event event) {
+        InputElement input = event.target;
+
+        switch (input.name) {
+            case 'price_per_month':
+                model.expiry_month = num.parse(input.value);
+                break;
+        }
+    }
 
     getState() {
         return {

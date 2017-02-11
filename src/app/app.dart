@@ -8,6 +8,8 @@ import 'profile_page.dart';
 import 'user_domains_page.dart';
 import 'domain_edit_page.dart';
 import 'add_payment_source_page.dart';
+import 'payment_source_page.dart';
+import 'create_subscription_page.dart';
 
 ButtonElement toggleMenuButton;
 DivElement menu;
@@ -46,6 +48,14 @@ main() {
 
         case 'AddPaymentSourcePage':
             page = new AddPaymentSourcePage();
+            break;
+
+        case 'UserPaymentSourcePage':
+            page = new PaymentSourcePage();
+            break;
+
+        case 'RentDomainPage':
+            page = new CreateSubscriptionPage();
             break;
 
         default:

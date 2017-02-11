@@ -86,7 +86,6 @@ class DomainEditPage implements Page {
         event.stopPropagation();
 
         ButtonElement button = event.target;
-        print(button.value);
 
         HttpRequest request = await deleteRequest('/domains/${button.value}');
 
