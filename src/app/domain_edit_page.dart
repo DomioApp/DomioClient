@@ -58,7 +58,7 @@ class DomainEditPage implements Page {
 
         if (request.readyState == HttpRequest.DONE &&
             (request.status == 200 || request.status == 0)) {
-            print("domain saved");
+            window.location.assign('${siteUrl}/profile/domains');
         }
     }
 
