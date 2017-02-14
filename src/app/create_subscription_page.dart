@@ -15,8 +15,7 @@ class CreateSubscriptionPageModel {
 
 class CreateSubscriptionPage implements Page {
     FormElement form;
-    TextInputElement nameInput;
-    TextInputElement button;
+    ButtonElement button;
     CreateSubscriptionPageModel model;
 
     CreateSubscriptionPage() {
@@ -37,7 +36,6 @@ class CreateSubscriptionPage implements Page {
 
     bindEvents() {
         form.onSubmit.listen(handleSubmit);
-
     }
 
     handleSubmit(Event event) async {
@@ -45,7 +43,6 @@ class CreateSubscriptionPage implements Page {
         event.stopPropagation();
 
         HttpRequest request = await postRequest('/subscriptions', getState());
-        window.console.log(request.response);
 
         if (request.readyState == HttpRequest.DONE &&
             (request.status == 200 || request.status == 0)) {
