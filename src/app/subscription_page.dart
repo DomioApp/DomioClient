@@ -14,6 +14,7 @@ class SubscriptionPageModel {
 
 class SubscriptionPage implements Page {
     ButtonElement deleteSubscriptionButton;
+    SubmitButtonInputElement updateSubscriptionButton;
     SubscriptionPageModel model;
 
     SubscriptionPage() {
@@ -29,10 +30,12 @@ class SubscriptionPage implements Page {
 
     bindElements() {
         deleteSubscriptionButton = querySelector('.delete-subscription-button');
+        updateSubscriptionButton = querySelector('.update-subscription-button');
     }
 
     bindEvents() {
         deleteSubscriptionButton.onClick.listen(deleteSubscription);
+        updateSubscriptionButton.onClick.listen(updateSubscription);
     }
 
     updateModel(Event event) {
@@ -65,5 +68,27 @@ class SubscriptionPage implements Page {
             (request.status == 200 || request.status == 0)) {
             window.location.assign('/profile/subscriptions');
         }
+    }
+
+    updateSubscription(Event event) async {
+        event.preventDefault();
+        event.stopPropagation();
+
+        SubmitButtonInputElement button = event.target;
+//
+        String subId = button.getAttribute('value');
+//
+        HttpRequest request = await putRequest('/subscriptions/${subId}', getState());
+
+        window.console.log(request.response);
+
+        if (request.readyState == HttpRequest.DONE &&
+            (request.status == 200 || request.status == 0)) {
+            window.location.assign('/profile/subscriptions');
+        }
+    }
+
+    getState() {
+        window.console.log(123);
     }
 }
