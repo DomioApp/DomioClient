@@ -53,7 +53,7 @@ class LoginPage implements Page {
 
         window.console.log(getState());
 
-        HttpRequest request = await postRequest('/users/login', getState());
+        HttpRequest request = await postRequest('/user/login', getState());
 
         window.console.log(model);
 
