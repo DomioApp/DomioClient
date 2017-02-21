@@ -53,7 +53,7 @@ class DomainEditPage implements Page {
         event.preventDefault();
         event.stopPropagation();
 
-        HttpRequest request = await putRequest('/domains/${domainName}', getState());
+        HttpRequest request = await putRequest('/domain/${domainName}', getState());
         window.console.log(request.response);
 
         if (request.readyState == HttpRequest.DONE &&
@@ -87,7 +87,7 @@ class DomainEditPage implements Page {
 
         ButtonElement button = event.target;
 
-        HttpRequest request = await deleteRequest('/domains/${button.value}');
+        HttpRequest request = await deleteRequest('/domain/${button.value}');
 
         window.console.log(request.response);
 

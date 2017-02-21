@@ -78,7 +78,7 @@ class SubscriptionPage implements Page {
 //
         String subId = button.getAttribute('value');
 //
-        HttpRequest request = await putRequest('/subscriptions/${subId}', getState());
+        HttpRequest request = await putRequest('/subscriptions/${subId}/records', getState());
 
         window.console.log(request.response);
 
