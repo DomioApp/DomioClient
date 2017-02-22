@@ -14,7 +14,8 @@ class SubscriptionPageModel {
 
 class SubscriptionPage implements Page {
     ButtonElement deleteSubscriptionButton;
-    SubmitButtonInputElement updateSubscriptionButton;
+    FormElement subscriptionRecordForm;
+    InputElement subscriptionRecordInput;
     SubscriptionPageModel model;
 
     SubscriptionPage() {
@@ -30,12 +31,13 @@ class SubscriptionPage implements Page {
 
     bindElements() {
         deleteSubscriptionButton = querySelector('.delete-subscription-button');
-        updateSubscriptionButton = querySelector('.update-subscription-button');
+        subscriptionRecordForm = querySelector('.b-subscription-record-form');
+        subscriptionRecordInput = querySelector('.b-subscription-record-form input.value-input');
     }
 
     bindEvents() {
         deleteSubscriptionButton.onClick.listen(deleteSubscription);
-        updateSubscriptionButton.onClick.listen(updateSubscription);
+        subscriptionRecordForm.onSubmit.listen(updateSubscription);
     }
 
     updateModel(Event event) {
@@ -50,6 +52,26 @@ class SubscriptionPage implements Page {
                 model.price_per_month = num.parse(input.value);
                 break;
         }
+    }
+
+    updateSubscription(Event event) async {
+        event.preventDefault();
+        event.stopPropagation();
+
+        SubmitButtonInputElement button = event.target;
+
+        String subId = button.getAttribute('value');
+
+        window.console.log(getState());
+
+        HttpRequest request = await putRequest('/subscription/${subId}/records', getState());
+
+        window.console.log(request.response);
+
+//        if (request.readyState == HttpRequest.DONE &&
+//            (request.status == 200 || request.status == 0)) {
+//            window.location.assign('/profile/subscriptions');
+//        }
     }
 
     deleteSubscription(Event event) async {
@@ -70,25 +92,11 @@ class SubscriptionPage implements Page {
         }
     }
 
-    updateSubscription(Event event) async {
-        event.preventDefault();
-        event.stopPropagation();
-
-        SubmitButtonInputElement button = event.target;
-//
-        String subId = button.getAttribute('value');
-//
-        HttpRequest request = await putRequest('/subscriptions/${subId}/records', getState());
-
-        window.console.log(request.response);
-
-        if (request.readyState == HttpRequest.DONE &&
-            (request.status == 200 || request.status == 0)) {
-            window.location.assign('/profile/subscriptions');
-        }
-    }
 
     getState() {
-        window.console.log(123);
+        return {
+            'key': 'heyho',
+            'value': subscriptionRecordInput.value
+        };
     }
 }
