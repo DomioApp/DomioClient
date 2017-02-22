@@ -16,6 +16,9 @@ class SubscriptionPage implements Page {
     ButtonElement deleteSubscriptionButton;
     FormElement subscriptionRecordForm;
     InputElement subscriptionRecordInput;
+    InputElement subIdInput;
+    SelectElement recordTypeSelect;
+
     SubscriptionPageModel model;
 
     SubscriptionPage() {
@@ -33,6 +36,8 @@ class SubscriptionPage implements Page {
         deleteSubscriptionButton = querySelector('.delete-subscription-button');
         subscriptionRecordForm = querySelector('.b-subscription-record-form');
         subscriptionRecordInput = querySelector('.b-subscription-record-form input.value-input');
+        recordTypeSelect = querySelector('.b-subscription-record-form select.value-type-select');
+        subIdInput = querySelector('.b-subscription-record-form input.subscription-id-input');
     }
 
     bindEvents() {
@@ -60,7 +65,7 @@ class SubscriptionPage implements Page {
 
         SubmitButtonInputElement button = event.target;
 
-        String subId = button.getAttribute('value');
+        String subId = subIdInput.getAttribute('value');
 
         window.console.log(getState());
 
@@ -95,7 +100,7 @@ class SubscriptionPage implements Page {
 
     getState() {
         return {
-            'key': 'heyho',
+            'key': recordTypeSelect.options[recordTypeSelect.selectedIndex].value,
             'value': subscriptionRecordInput.value
         };
     }
