@@ -14,6 +14,7 @@ class SubscriptionPageModel {
 
 class SubscriptionPage implements Page {
     ButtonElement deleteSubscriptionButton;
+    ButtonElement deleteRecordButton;
     FormElement subscriptionRecordForm;
     InputElement subscriptionRecordInput;
     InputElement subIdInput;
@@ -34,14 +35,16 @@ class SubscriptionPage implements Page {
 
     bindElements() {
         deleteSubscriptionButton = querySelector('.delete-subscription-button');
+        deleteRecordButton = querySelector('.delete-record-button');
         subscriptionRecordForm = querySelector('.b-subscription-record-form');
         subscriptionRecordInput = querySelector('.b-subscription-record-form input.value-input');
         recordTypeSelect = querySelector('.b-subscription-record-form select.value-type-select');
-        subIdInput = querySelector('.b-subscription-record-form input.subscription-id-input');
+        subIdInput = querySelector('input.subscription-id-input');
     }
 
     bindEvents() {
         deleteSubscriptionButton.onClick.listen(deleteSubscription);
+        deleteRecordButton.onClick.listen(deleteRecord);
         subscriptionRecordForm.onSubmit.listen(updateSubscription);
     }
 
@@ -97,8 +100,30 @@ class SubscriptionPage implements Page {
         }
     }
 
+    deleteRecord(Event event) async {
+        event.preventDefault();
+        event.stopPropagation();
+
+        ButtonElement button = event.target;
+
+        String subId = subIdInput.getAttribute('value');
+
+        print(button.value);
+
+        HttpRequest request = await putRequest('/subscription/${subId}/record/${button.value}', getRecordState());
+
+        window.console.log(request.response);
+    }
+
 
     getState() {
+        return {
+            'key': recordTypeSelect.options[recordTypeSelect.selectedIndex].value,
+            'value': subscriptionRecordInput.value
+        };
+    }
+
+    getRecordState() {
         return {
             'key': recordTypeSelect.options[recordTypeSelect.selectedIndex].value,
             'value': subscriptionRecordInput.value
