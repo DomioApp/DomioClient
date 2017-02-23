@@ -83,7 +83,7 @@ putRequest(String url, model) async {
     return request;
 }
 
-deleteRequest(String url) async {
+deleteRequest(String url, model) async {
     HttpRequest request = new HttpRequest();
 
     request.withCredentials = true;
@@ -102,7 +102,10 @@ deleteRequest(String url) async {
     }
 
 
-    request.send();
+    String jsonData = JSON.encode(model);
+
+    request.send(jsonData);
+
 
     await request.onLoadEnd.first;
 

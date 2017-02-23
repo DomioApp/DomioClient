@@ -14,7 +14,7 @@ class SubscriptionPageModel {
 
 class SubscriptionPage implements Page {
     ButtonElement deleteSubscriptionButton;
-    ButtonElement deleteRecordButton;
+    ElementList<ButtonElement> deleteRecordButtons;
     FormElement subscriptionRecordForm;
     InputElement subscriptionRecordInput;
     InputElement subIdInput;
@@ -35,7 +35,7 @@ class SubscriptionPage implements Page {
 
     bindElements() {
         deleteSubscriptionButton = querySelector('.delete-subscription-button');
-        deleteRecordButton = querySelector('.delete-record-button');
+        deleteRecordButtons = querySelectorAll('.delete-record-button');
         subscriptionRecordForm = querySelector('.b-subscription-record-form');
         subscriptionRecordInput = querySelector('.b-subscription-record-form input.value-input');
         recordTypeSelect = querySelector('.b-subscription-record-form select.value-type-select');
@@ -44,7 +44,7 @@ class SubscriptionPage implements Page {
 
     bindEvents() {
         deleteSubscriptionButton.onClick.listen(deleteSubscription);
-        deleteRecordButton.onClick.listen(deleteRecord);
+        deleteRecordButtons.onClick.listen(deleteRecord);
         subscriptionRecordForm.onSubmit.listen(updateSubscription);
     }
 
@@ -109,8 +109,9 @@ class SubscriptionPage implements Page {
         String subId = subIdInput.getAttribute('value');
 
         print(button.value);
+        print(subId);
 
-        HttpRequest request = await putRequest('/subscription/${subId}/record/${button.value}', getRecordState());
+        HttpRequest request = await deleteRequest('/subscription/${subId}/records', getRecordState(event));
 
         window.console.log(request.response);
     }
@@ -123,10 +124,12 @@ class SubscriptionPage implements Page {
         };
     }
 
-    getRecordState() {
+    getRecordState(Event event) {
+        ButtonElement deleteButton = event.target;
+        var recordType = deleteButton.parent.parent.getAttribute('data-type');
         return {
-            'key': recordTypeSelect.options[recordTypeSelect.selectedIndex].value,
-            'value': subscriptionRecordInput.value
+            'key': recordType,
+            'value': deleteButton.value
         };
     }
 }
