@@ -87,7 +87,7 @@ class DomainEditPage implements Page {
 
         ButtonElement button = event.target;
 
-        HttpRequest request = await deleteRequest('/domain/${button.value}');
+        HttpRequest request = await deleteRequest('/domain/${button.value}', null);
 
         window.console.log(request.response);
 

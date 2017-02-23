@@ -58,7 +58,7 @@ class PaymentSourcePage implements Page {
 
         print(button.value);
 
-        HttpRequest request = await deleteRequest('/cards/${button.value}');
+        HttpRequest request = await deleteRequest('/cards/${button.value}', null);
 
         window.console.log(request.response);
 

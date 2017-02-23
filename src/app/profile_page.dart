@@ -56,7 +56,7 @@ class ProfilePage implements Page {
 
         ButtonElement button = event.target;
 
-        HttpRequest request = await deleteRequest('/user');
+        HttpRequest request = await deleteRequest('/user', null);
 
         window.console.log(request.response);
 
