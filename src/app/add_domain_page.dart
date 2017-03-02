@@ -4,13 +4,18 @@ import './config.dart';
 import 'api_connector.dart';
 
 class AddDomainPageModel {
-    String name;
-    num price_per_month;
+    String Name;
+    num PricePerMonth;
+
+    AddDomainPageModel() {
+        Name = "";
+        PricePerMonth = 0;
+    }
 
     Map toJson() =>
         new Map()
-            ..['name'] = name
-            ..['price_per_month'] = price_per_month;
+            ..['name'] = Name
+            ..['price_per_month'] = PricePerMonth;
 }
 
 class AddDomainPage implements Page {
@@ -22,12 +27,12 @@ class AddDomainPage implements Page {
     AddDomainPage() {
         init();
         bindElements();
+        loadData();
         bindEvents();
     }
 
     init() {
         model = new AddDomainPageModel();
-        print(runtimeType);
     }
 
     bindElements() {
@@ -36,37 +41,51 @@ class AddDomainPage implements Page {
         priceInput = form.querySelector('input[name="price_per_month"]');
     }
 
+    loadData() {
+        nameInput.value = model.Name;
+        priceInput.value = model.PricePerMonth.toString();
+    }
+
     bindEvents() {
         form.onSubmit.listen(handleSubmit);
 
-        nameInput.onChange.listen(updateModel);
-        priceInput.onChange.listen(updateModel);
+        nameInput.onInput.listen(updateModel);
+        priceInput.onInput.listen(updateModel);
     }
 
     handleSubmit(Event event) async {
         event.preventDefault();
         event.stopPropagation();
 
+        if (!isValid(model)) {
+            window.console.log("wrong data");
+            return;
+        }
+
         HttpRequest request = await postRequest('/domains', model);
         window.console.log(request.response);
 
         if (request.readyState == HttpRequest.DONE &&
             (request.status == 200 || request.status == 0)) {
-            window.location.assign('${siteUrl}/profile/domain/${model.name}');
+            window.location.assign('${siteUrl}/profile/domain/${model.Name}');
         }
+    }
+
+    bool isValid(AddDomainPageModel model) {
+        return model.Name.length > 0 && model.PricePerMonth > 0;
     }
 
     updateModel(Event event) {
         InputElement input = event.target;
-        window.console.log(model);
 
         switch (input.name) {
             case 'name':
-                model.name = input.value;
+                model.Name = input.value;
                 break;
             case 'price_per_month':
-                model.price_per_month = num.parse(input.value);
+                model.PricePerMonth = num.parse(input.value);
                 break;
         }
+        window.console.log(model);
     }
 }
