@@ -69,7 +69,7 @@ main() {
     }
 }
 
-bindElements() {
+void bindElements() {
     menu = querySelector('.b-top-bar-container');
     toggleMenuButton = menu.querySelector('.toggle-menu-button');
 }

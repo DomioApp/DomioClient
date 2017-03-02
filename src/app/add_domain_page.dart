@@ -31,22 +31,22 @@ class AddDomainPage implements Page {
         bindEvents();
     }
 
-    init() {
+    void init() {
         model = new AddDomainPageModel();
     }
 
-    bindElements() {
+    void bindElements() {
         form = querySelector('form');
         nameInput = form.querySelector('input[name="name"]');
         priceInput = form.querySelector('input[name="price_per_month"]');
     }
 
-    loadData() {
+    void loadData() {
         nameInput.value = model.Name;
         priceInput.value = model.PricePerMonth.toString();
     }
 
-    bindEvents() {
+    void bindEvents() {
         form.onSubmit.listen(handleSubmit);
 
         nameInput.onInput.listen(updateModel);
@@ -75,7 +75,7 @@ class AddDomainPage implements Page {
         return model.Name.length > 0 && model.PricePerMonth > 0;
     }
 
-    updateModel(Event event) {
+    void updateModel(Event event) {
         InputElement input = event.target;
 
         switch (input.name) {

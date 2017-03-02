@@ -55,6 +55,7 @@ postRequest(String url, model) async {
 
     return request;
 }
+
 putRequest(String url, model) async {
     HttpRequest request = new HttpRequest();
 
@@ -63,14 +64,14 @@ putRequest(String url, model) async {
 
     var fullUrl = '${apiUrl}${url}';
 
-    request.open("PUT", fullUrl);
+    request.open('PUT', fullUrl);
 
     request.setRequestHeader('Content-Type', 'application/json');
 
+    var token = readCookie('token');
 
-    if (window.localStorage['token'] != null) {
-        request.setRequestHeader(
-            'Authorization', 'Bearer ${window.localStorage['token']}');
+    if (token != null) {
+        request.setRequestHeader('Authorization', 'Bearer $token');
     }
 
 
@@ -110,4 +111,18 @@ deleteRequest(String url, model) async {
     await request.onLoadEnd.first;
 
     return request;
+}
+
+
+String readCookie(String name) {
+    String nameEQ = name + '=';
+    List<String> ca = document.cookie.split(';');
+    for (int i = 0; i < ca.length; i++) {
+        String c = ca[i];
+        c = c.trim();
+        if (c.indexOf(nameEQ) == 0) {
+            return c.substring(nameEQ.length);
+        }
+    }
+    return null;
 }
