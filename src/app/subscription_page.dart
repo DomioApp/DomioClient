@@ -90,7 +90,7 @@ class SubscriptionPage implements Page {
 
         print(button.value);
 
-        HttpRequest request = await deleteRequest('/subscriptions/${button.value}', null);
+        HttpRequest request = await deleteRequest('/subscription/${button.value}', null);
 
         window.console.log(request.response);
 
